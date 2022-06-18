@@ -1,0 +1,457 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="marketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="customers">
+    <Key>
+      <PropertyRef Name="c_email" />
+    </Key>
+    <Property Name="c_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="c_email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="c_phone" Type="int" Nullable="false" />
+    <Property Name="c_website" Type="varchar" MaxLength="50" />
+    <Property Name="c_fax" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Export_permession">
+    <Key>
+      <PropertyRef Name="eper_num" />
+      <PropertyRef Name="item_id" />
+    </Key>
+    <Property Name="eper_num" Type="int" Nullable="false" />
+    <Property Name="item_id" Type="int" Nullable="false" />
+    <Property Name="store_name" Type="varchar" MaxLength="20" />
+    <Property Name="c_email" Type="varchar" MaxLength="50" />
+    <Property Name="eper_date" Type="date" />
+  </EntityType>
+  <EntityType Name="Export_Quantity">
+    <Key>
+      <PropertyRef Name="eper_num" />
+      <PropertyRef Name="item_id" />
+      <PropertyRef Name="export_quantity" />
+    </Key>
+    <Property Name="eper_num" Type="int" Nullable="false" />
+    <Property Name="item_id" Type="int" Nullable="false" />
+    <Property Name="c_email" Type="varchar" MaxLength="50" />
+    <Property Name="store_name" Type="varchar" MaxLength="20" />
+    <Property Name="export_quantity" Type="int" Nullable="false" />
+    <Property Name="Prod_Date" Type="date" />
+    <Property Name="Expi_Date" Type="date" />
+  </EntityType>
+  <EntityType Name="import_permession">
+    <Key>
+      <PropertyRef Name="Iper_num" />
+      <PropertyRef Name="item_id" />
+    </Key>
+    <Property Name="Iper_num" Type="int" Nullable="false" />
+    <Property Name="item_id" Type="int" Nullable="false" />
+    <Property Name="suplier_email" Type="varchar" MaxLength="50" />
+    <Property Name="store_name" Type="varchar" MaxLength="20" />
+    <Property Name="Iper_date" Type="date" />
+  </EntityType>
+  <EntityType Name="Import_Quantity">
+    <Key>
+      <PropertyRef Name="Iper_num" />
+      <PropertyRef Name="item_id" />
+      <PropertyRef Name="I_quantity" />
+    </Key>
+    <Property Name="Iper_num" Type="int" Nullable="false" />
+    <Property Name="item_id" Type="int" Nullable="false" />
+    <Property Name="suplier_email" Type="varchar" MaxLength="50" />
+    <Property Name="store_name" Type="varchar" MaxLength="20" />
+    <Property Name="I_quantity" Type="int" Nullable="false" />
+    <Property Name="Prod_date" Type="date" />
+    <Property Name="Exp_date" Type="date" />
+  </EntityType>
+  <EntityType Name="Item_store">
+    <Key>
+      <PropertyRef Name="store_name" />
+      <PropertyRef Name="item_id" />
+    </Key>
+    <Property Name="store_name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="item_id" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="items">
+    <Key>
+      <PropertyRef Name="Item_id" />
+    </Key>
+    <Property Name="Item_id" Type="int" Nullable="false" />
+    <Property Name="item_name" Type="varchar" MaxLength="59" Nullable="false" />
+    <Property Name="prod_date" Type="date" Nullable="false" />
+    <Property Name="Ex_date" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="measuring_unit">
+    <Key>
+      <PropertyRef Name="item_id" />
+      <PropertyRef Name="measure" />
+    </Key>
+    <Property Name="item_id" Type="int" Nullable="false" />
+    <Property Name="measure" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="store">
+    <Key>
+      <PropertyRef Name="store_name" />
+    </Key>
+    <Property Name="store_name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="store_Address" Type="varchar" MaxLength="50" />
+    <Property Name="store_manager" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="suppliers">
+    <Key>
+      <PropertyRef Name="suplier_email" />
+    </Key>
+    <Property Name="suplier_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="suplier_email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="suplier_phone" Type="int" />
+    <Property Name="suplier_mobile" Type="int" Nullable="false" />
+    <Property Name="Suplier_fax" Type="varchar" MaxLength="50" />
+    <Property Name="Suplier_site" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="ec_fk">
+    <End Role="customers" Type="Self.customers" Multiplicity="0..1" />
+    <End Role="Export_permession" Type="Self.Export_permession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customers">
+        <PropertyRef Name="c_email" />
+      </Principal>
+      <Dependent Role="Export_permession">
+        <PropertyRef Name="c_email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CEQE">
+    <End Role="customers" Type="Self.customers" Multiplicity="0..1" />
+    <End Role="Export_Quantity" Type="Self.Export_Quantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customers">
+        <PropertyRef Name="c_email" />
+      </Principal>
+      <Dependent Role="Export_Quantity">
+        <PropertyRef Name="c_email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SPEQ">
+    <End Role="items" Type="Self.items" Multiplicity="1" />
+    <End Role="Export_Quantity" Type="Self.Export_Quantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="items">
+        <PropertyRef Name="Item_id" />
+      </Principal>
+      <Dependent Role="Export_Quantity">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SPEQQ">
+    <End Role="Export_permession" Type="Self.Export_permession" Multiplicity="1" />
+    <End Role="Export_Quantity" Type="Self.Export_Quantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Export_permession">
+        <PropertyRef Name="eper_num" />
+        <PropertyRef Name="item_id" />
+      </Principal>
+      <Dependent Role="Export_Quantity">
+        <PropertyRef Name="eper_num" />
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WHEQE">
+    <End Role="store" Type="Self.store" Multiplicity="0..1" />
+    <End Role="Export_Quantity" Type="Self.Export_Quantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="store">
+        <PropertyRef Name="store_name" />
+      </Principal>
+      <Dependent Role="Export_Quantity">
+        <PropertyRef Name="store_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WHIQ">
+    <End Role="store" Type="Self.store" Multiplicity="0..1" />
+    <End Role="Import_Quantity" Type="Self.Import_Quantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="store">
+        <PropertyRef Name="store_name" />
+      </Principal>
+      <Dependent Role="Import_Quantity">
+        <PropertyRef Name="store_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ii_fk">
+    <End Role="items" Type="Self.items" Multiplicity="1" />
+    <End Role="Item_store" Type="Self.Item_store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="items">
+        <PropertyRef Name="Item_id" />
+      </Principal>
+      <Dependent Role="Item_store">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ip_fk">
+    <End Role="items" Type="Self.items" Multiplicity="1" />
+    <End Role="import_permession" Type="Self.import_permession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="items">
+        <PropertyRef Name="Item_id" />
+      </Principal>
+      <Dependent Role="import_permession">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ISs_fk">
+    <End Role="store" Type="Self.store" Multiplicity="1" />
+    <End Role="Item_store" Type="Self.Item_store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="store">
+        <PropertyRef Name="store_name" />
+      </Principal>
+      <Dependent Role="Item_store">
+        <PropertyRef Name="store_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="m_fk">
+    <End Role="items" Type="Self.items" Multiplicity="1" />
+    <End Role="measuring_unit" Type="Self.measuring_unit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="items">
+        <PropertyRef Name="Item_id" />
+      </Principal>
+      <Dependent Role="measuring_unit">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="se_fk">
+    <End Role="items" Type="Self.items" Multiplicity="1" />
+    <End Role="Export_permession" Type="Self.Export_permession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="items">
+        <PropertyRef Name="Item_id" />
+      </Principal>
+      <Dependent Role="Export_permession">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="sp_fk">
+    <End Role="suppliers" Type="Self.suppliers" Multiplicity="0..1" />
+    <End Role="import_permession" Type="Self.import_permession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="suppliers">
+        <PropertyRef Name="suplier_email" />
+      </Principal>
+      <Dependent Role="import_permession">
+        <PropertyRef Name="suplier_email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="stp_fk">
+    <End Role="store" Type="Self.store" Multiplicity="0..1" />
+    <End Role="import_permession" Type="Self.import_permession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="store">
+        <PropertyRef Name="store_name" />
+      </Principal>
+      <Dependent Role="import_permession">
+        <PropertyRef Name="store_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="str_fk">
+    <End Role="store" Type="Self.store" Multiplicity="0..1" />
+    <End Role="Export_permession" Type="Self.Export_permession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="store">
+        <PropertyRef Name="store_name" />
+      </Principal>
+      <Dependent Role="Export_permession">
+        <PropertyRef Name="store_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="supIm_fk">
+    <End Role="items" Type="Self.items" Multiplicity="1" />
+    <End Role="Import_Quantity" Type="Self.Import_Quantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="items">
+        <PropertyRef Name="Item_id" />
+      </Principal>
+      <Dependent Role="Import_Quantity">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="supiQ_fk">
+    <End Role="import_permession" Type="Self.import_permession" Multiplicity="1" />
+    <End Role="Import_Quantity" Type="Self.Import_Quantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="import_permession">
+        <PropertyRef Name="Iper_num" />
+        <PropertyRef Name="item_id" />
+      </Principal>
+      <Dependent Role="Import_Quantity">
+        <PropertyRef Name="Iper_num" />
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="supQi_fk">
+    <End Role="suppliers" Type="Self.suppliers" Multiplicity="0..1" />
+    <End Role="Import_Quantity" Type="Self.Import_Quantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="suppliers">
+        <PropertyRef Name="suplier_email" />
+      </Principal>
+      <Dependent Role="Import_Quantity">
+        <PropertyRef Name="suplier_email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="expdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="itmcod" Type="int" Mode="In" />
+    <Parameter Name="day" Type="int" Mode="In" />
+  </Function>
+  <Function Name="expQ_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="itemID" Type="int" Mode="In" />
+    <Parameter Name="pernumber" Type="int" Mode="In" />
+    <Parameter Name="uc_mail1" Type="varchar" Mode="In" />
+    <Parameter Name="UStrName1" Type="varchar" Mode="In" />
+    <Parameter Name="UQ" Type="int" Mode="In" />
+  </Function>
+  <Function Name="expQuant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="exID" Type="int" Mode="In" />
+    <Parameter Name="experNo" Type="int" Mode="In" />
+    <Parameter Name="exitmId" Type="int" Mode="In" />
+    <Parameter Name="cmail" Type="varchar" Mode="In" />
+    <Parameter Name="exStrName" Type="varchar" Mode="In" />
+    <Parameter Name="exQ" Type="int" Mode="In" />
+  </Function>
+  <Function Name="impdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="perNo" Type="int" Mode="In" />
+    <Parameter Name="itmId" Type="int" Mode="In" />
+    <Parameter Name="mail" Type="varchar" Mode="In" />
+    <Parameter Name="StrName" Type="varchar" Mode="In" />
+    <Parameter Name="Q" Type="int" Mode="In" />
+  </Function>
+  <Function Name="impQ_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="itmId1" Type="int" Mode="In" />
+    <Parameter Name="mail1" Type="varchar" Mode="In" />
+    <Parameter Name="StrName1" Type="varchar" Mode="In" />
+    <Parameter Name="Q" Type="int" Mode="In" />
+  </Function>
+  <Function Name="itemperiod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="itmId" Type="int" Mode="In" />
+    <Parameter Name="Rang" Type="int" Mode="In" />
+  </Function>
+  <Function Name="itemreport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="item_ID" Type="int" Mode="In" />
+    <Parameter Name="stname" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="MiniusImpQun_" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="MiniusImpQun@">
+    <Parameter Name="newQ" Type="int" Mode="In" />
+    <Parameter Name="item_id" Type="int" Mode="In" />
+    <Parameter Name="storename" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="storeReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="stName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Up_itemstorQ" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="itemID" Type="int" Mode="In" />
+    <Parameter Name="St_nm" Type="varchar" Mode="In" />
+    <Parameter Name="NewQun" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updatetrans" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="itmid" Type="int" Mode="In" />
+    <Parameter Name="prodate" Type="date" Mode="In" />
+    <Parameter Name="exdate" Type="date" Mode="In" />
+    <Parameter Name="stname" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="marketModelStoreContainer">
+    <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Export_permession" EntityType="Self.Export_permession" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Export_Quantity" EntityType="Self.Export_Quantity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="import_permession" EntityType="Self.import_permession" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Import_Quantity" EntityType="Self.Import_Quantity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Item_store" EntityType="Self.Item_store" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="items" EntityType="Self.items" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="measuring_unit" EntityType="Self.measuring_unit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="store" EntityType="Self.store" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="suppliers" EntityType="Self.suppliers" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="ec_fk" Association="Self.ec_fk">
+      <End Role="customers" EntitySet="customers" />
+      <End Role="Export_permession" EntitySet="Export_permession" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CEQE" Association="Self.FK_CEQE">
+      <End Role="customers" EntitySet="customers" />
+      <End Role="Export_Quantity" EntitySet="Export_Quantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SPEQ" Association="Self.FK_SPEQ">
+      <End Role="items" EntitySet="items" />
+      <End Role="Export_Quantity" EntitySet="Export_Quantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SPEQQ" Association="Self.FK_SPEQQ">
+      <End Role="Export_permession" EntitySet="Export_permession" />
+      <End Role="Export_Quantity" EntitySet="Export_Quantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WHEQE" Association="Self.FK_WHEQE">
+      <End Role="store" EntitySet="store" />
+      <End Role="Export_Quantity" EntitySet="Export_Quantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WHIQ" Association="Self.FK_WHIQ">
+      <End Role="store" EntitySet="store" />
+      <End Role="Import_Quantity" EntitySet="Import_Quantity" />
+    </AssociationSet>
+    <AssociationSet Name="ii_fk" Association="Self.ii_fk">
+      <End Role="items" EntitySet="items" />
+      <End Role="Item_store" EntitySet="Item_store" />
+    </AssociationSet>
+    <AssociationSet Name="ip_fk" Association="Self.ip_fk">
+      <End Role="items" EntitySet="items" />
+      <End Role="import_permession" EntitySet="import_permession" />
+    </AssociationSet>
+    <AssociationSet Name="ISs_fk" Association="Self.ISs_fk">
+      <End Role="store" EntitySet="store" />
+      <End Role="Item_store" EntitySet="Item_store" />
+    </AssociationSet>
+    <AssociationSet Name="m_fk" Association="Self.m_fk">
+      <End Role="items" EntitySet="items" />
+      <End Role="measuring_unit" EntitySet="measuring_unit" />
+    </AssociationSet>
+    <AssociationSet Name="se_fk" Association="Self.se_fk">
+      <End Role="items" EntitySet="items" />
+      <End Role="Export_permession" EntitySet="Export_permession" />
+    </AssociationSet>
+    <AssociationSet Name="sp_fk" Association="Self.sp_fk">
+      <End Role="suppliers" EntitySet="suppliers" />
+      <End Role="import_permession" EntitySet="import_permession" />
+    </AssociationSet>
+    <AssociationSet Name="stp_fk" Association="Self.stp_fk">
+      <End Role="store" EntitySet="store" />
+      <End Role="import_permession" EntitySet="import_permession" />
+    </AssociationSet>
+    <AssociationSet Name="str_fk" Association="Self.str_fk">
+      <End Role="store" EntitySet="store" />
+      <End Role="Export_permession" EntitySet="Export_permession" />
+    </AssociationSet>
+    <AssociationSet Name="supIm_fk" Association="Self.supIm_fk">
+      <End Role="items" EntitySet="items" />
+      <End Role="Import_Quantity" EntitySet="Import_Quantity" />
+    </AssociationSet>
+    <AssociationSet Name="supiQ_fk" Association="Self.supiQ_fk">
+      <End Role="import_permession" EntitySet="import_permession" />
+      <End Role="Import_Quantity" EntitySet="Import_Quantity" />
+    </AssociationSet>
+    <AssociationSet Name="supQi_fk" Association="Self.supQi_fk">
+      <End Role="suppliers" EntitySet="suppliers" />
+      <End Role="Import_Quantity" EntitySet="Import_Quantity" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="marketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="c_email" />
+    </Key>
+    <Property Name="c_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="c_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="c_phone" Type="Int32" Nullable="false" />
+    <Property Name="c_website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="c_fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Export_permession" Relationship="Self.ec_fk" FromRole="customers" ToRole="Export_permession" />
+    <NavigationProperty Name="Export_Quantity" Relationship="Self.FK_CEQE" FromRole="customers" ToRole="Export_Quantity" />
+  </EntityType>
+  <EntityType Name="Export_permession">
+    <Key>
+      <PropertyRef Name="eper_num" />
+      <PropertyRef Name="item_id" />
+    </Key>
+    <Property Name="eper_num" Type="Int32" Nullable="false" />
+    <Property Name="item_id" Type="Int32" Nullable="false" />
+    <Property Name="store_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="c_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="eper_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="customer" Relationship="Self.ec_fk" FromRole="Export_permession" ToRole="customers" />
+    <NavigationProperty Name="Export_Quantity" Relationship="Self.FK_SPEQQ" FromRole="Export_permession" ToRole="Export_Quantity" />
+    <NavigationProperty Name="item" Relationship="Self.se_fk" FromRole="Export_permession" ToRole="items" />
+    <NavigationProperty Name="store" Relationship="Self.str_fk" FromRole="Export_permession" ToRole="store" />
+  </EntityType>
+  <EntityType Name="Export_Quantity">
+    <Key>
+      <PropertyRef Name="eper_num" />
+      <PropertyRef Name="item_id" />
+      <PropertyRef Name="export_quantity1" />
+    </Key>
+    <Property Name="eper_num" Type="Int32" Nullable="false" />
+    <Property Name="item_id" Type="Int32" Nullable="false" />
+    <Property Name="c_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="store_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="export_quantity1" Type="Int32" Nullable="false" />
+    <Property Name="Prod_Date" Type="DateTime" Precision="0" />
+    <Property Name="Expi_Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="customer" Relationship="Self.FK_CEQE" FromRole="Export_Quantity" ToRole="customers" />
+    <NavigationProperty Name="Export_permession" Relationship="Self.FK_SPEQQ" FromRole="Export_Quantity" ToRole="Export_permession" />
+    <NavigationProperty Name="item" Relationship="Self.FK_SPEQ" FromRole="Export_Quantity" ToRole="items" />
+    <NavigationProperty Name="store" Relationship="Self.FK_WHEQE" FromRole="Export_Quantity" ToRole="store" />
+  </EntityType>
+  <EntityType Name="import_permession">
+    <Key>
+      <PropertyRef Name="Iper_num" />
+      <PropertyRef Name="item_id" />
+    </Key>
+    <Property Name="Iper_num" Type="Int32" Nullable="false" />
+    <Property Name="item_id" Type="Int32" Nullable="false" />
+    <Property Name="suplier_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="store_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Iper_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="item" Relationship="Self.ip_fk" FromRole="import_permession" ToRole="items" />
+    <NavigationProperty Name="supplier" Relationship="Self.sp_fk" FromRole="import_permession" ToRole="suppliers" />
+    <NavigationProperty Name="store" Relationship="Self.stp_fk" FromRole="import_permession" ToRole="store" />
+    <NavigationProperty Name="Import_Quantity" Relationship="Self.supiQ_fk" FromRole="import_permession" ToRole="Import_Quantity" />
+  </EntityType>
+  <EntityType Name="Import_Quantity">
+    <Key>
+      <PropertyRef Name="Iper_num" />
+      <PropertyRef Name="item_id" />
+      <PropertyRef Name="I_quantity" />
+    </Key>
+    <Property Name="Iper_num" Type="Int32" Nullable="false" />
+    <Property Name="item_id" Type="Int32" Nullable="false" />
+    <Property Name="suplier_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="store_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="I_quantity" Type="Int32" Nullable="false" />
+    <Property Name="Prod_date" Type="DateTime" Precision="0" />
+    <Property Name="Exp_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="import_permession" Relationship="Self.supiQ_fk" FromRole="Import_Quantity" ToRole="import_permession" />
+    <NavigationProperty Name="store" Relationship="Self.FK_WHIQ" FromRole="Import_Quantity" ToRole="store" />
+    <NavigationProperty Name="item" Relationship="Self.supIm_fk" FromRole="Import_Quantity" ToRole="items" />
+    <NavigationProperty Name="supplier" Relationship="Self.supQi_fk" FromRole="Import_Quantity" ToRole="suppliers" />
+  </EntityType>
+  <EntityType Name="Item_store">
+    <Key>
+      <PropertyRef Name="store_name" />
+      <PropertyRef Name="item_id" />
+    </Key>
+    <Property Name="store_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="item_id" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" />
+    <NavigationProperty Name="item" Relationship="Self.ii_fk" FromRole="Item_store" ToRole="items" />
+    <NavigationProperty Name="store" Relationship="Self.ISs_fk" FromRole="Item_store" ToRole="store" />
+  </EntityType>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="Item_id" />
+    </Key>
+    <Property Name="Item_id" Type="Int32" Nullable="false" />
+    <Property Name="item_name" Type="String" MaxLength="59" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prod_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Ex_date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Export_permession" Relationship="Self.se_fk" FromRole="items" ToRole="Export_permession" />
+    <NavigationProperty Name="Export_Quantity" Relationship="Self.FK_SPEQ" FromRole="items" ToRole="Export_Quantity" />
+    <NavigationProperty Name="import_permession" Relationship="Self.ip_fk" FromRole="items" ToRole="import_permession" />
+    <NavigationProperty Name="Import_Quantity" Relationship="Self.supIm_fk" FromRole="items" ToRole="Import_Quantity" />
+    <NavigationProperty Name="Item_store" Relationship="Self.ii_fk" FromRole="items" ToRole="Item_store" />
+    <NavigationProperty Name="measuring_unit" Relationship="Self.m_fk" FromRole="items" ToRole="measuring_unit" />
+  </EntityType>
+  <EntityType Name="measuring_unit">
+    <Key>
+      <PropertyRef Name="item_id" />
+      <PropertyRef Name="measure" />
+    </Key>
+    <Property Name="item_id" Type="Int32" Nullable="false" />
+    <Property Name="measure" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="item" Relationship="Self.m_fk" FromRole="measuring_unit" ToRole="items" />
+  </EntityType>
+  <EntityType Name="store">
+    <Key>
+      <PropertyRef Name="store_name" />
+    </Key>
+    <Property Name="store_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="store_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="store_manager" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Export_permession" Relationship="Self.str_fk" FromRole="store" ToRole="Export_permession" />
+    <NavigationProperty Name="Export_Quantity" Relationship="Self.FK_WHEQE" FromRole="store" ToRole="Export_Quantity" />
+    <NavigationProperty Name="import_permession" Relationship="Self.stp_fk" FromRole="store" ToRole="import_permession" />
+    <NavigationProperty Name="Import_Quantity" Relationship="Self.FK_WHIQ" FromRole="store" ToRole="Import_Quantity" />
+    <NavigationProperty Name="Item_store" Relationship="Self.ISs_fk" FromRole="store" ToRole="Item_store" />
+  </EntityType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="suplier_email" />
+    </Key>
+    <Property Name="suplier_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="suplier_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="suplier_phone" Type="Int32" />
+    <Property Name="suplier_mobile" Type="Int32" Nullable="false" />
+    <Property Name="Suplier_fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Suplier_site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="import_permession" Relationship="Self.sp_fk" FromRole="suppliers" ToRole="import_permession" />
+    <NavigationProperty Name="Import_Quantity" Relationship="Self.supQi_fk" FromRole="suppliers" ToRole="Import_Quantity" />
+  </EntityType>
+  <Association Name="ec_fk">
+    <End Role="customers" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="Export_permession" Type="Self.Export_permession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customers">
+        <PropertyRef Name="c_email" />
+      </Principal>
+      <Dependent Role="Export_permession">
+        <PropertyRef Name="c_email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CEQE">
+    <End Role="customers" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="Export_Quantity" Type="Self.Export_Quantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customers">
+        <PropertyRef Name="c_email" />
+      </Principal>
+      <Dependent Role="Export_Quantity">
+        <PropertyRef Name="c_email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SPEQQ">
+    <End Role="Export_permession" Type="Self.Export_permession" Multiplicity="1" />
+    <End Role="Export_Quantity" Type="Self.Export_Quantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Export_permession">
+        <PropertyRef Name="eper_num" />
+        <PropertyRef Name="item_id" />
+      </Principal>
+      <Dependent Role="Export_Quantity">
+        <PropertyRef Name="eper_num" />
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="se_fk">
+    <End Role="items" Type="Self.item" Multiplicity="1" />
+    <End Role="Export_permession" Type="Self.Export_permession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="items">
+        <PropertyRef Name="Item_id" />
+      </Principal>
+      <Dependent Role="Export_permession">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="str_fk">
+    <End Role="store" Type="Self.store" Multiplicity="0..1" />
+    <End Role="Export_permession" Type="Self.Export_permession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="store">
+        <PropertyRef Name="store_name" />
+      </Principal>
+      <Dependent Role="Export_permession">
+        <PropertyRef Name="store_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SPEQ">
+    <End Role="items" Type="Self.item" Multiplicity="1" />
+    <End Role="Export_Quantity" Type="Self.Export_Quantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="items">
+        <PropertyRef Name="Item_id" />
+      </Principal>
+      <Dependent Role="Export_Quantity">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WHEQE">
+    <End Role="store" Type="Self.store" Multiplicity="0..1" />
+    <End Role="Export_Quantity" Type="Self.Export_Quantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="store">
+        <PropertyRef Name="store_name" />
+      </Principal>
+      <Dependent Role="Export_Quantity">
+        <PropertyRef Name="store_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ip_fk">
+    <End Role="items" Type="Self.item" Multiplicity="1" />
+    <End Role="import_permession" Type="Self.import_permession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="items">
+        <PropertyRef Name="Item_id" />
+      </Principal>
+      <Dependent Role="import_permession">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="sp_fk">
+    <End Role="suppliers" Type="Self.supplier" Multiplicity="0..1" />
+    <End Role="import_permession" Type="Self.import_permession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="suppliers">
+        <PropertyRef Name="suplier_email" />
+      </Principal>
+      <Dependent Role="import_permession">
+        <PropertyRef Name="suplier_email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="stp_fk">
+    <End Role="store" Type="Self.store" Multiplicity="0..1" />
+    <End Role="import_permession" Type="Self.import_permession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="store">
+        <PropertyRef Name="store_name" />
+      </Principal>
+      <Dependent Role="import_permession">
+        <PropertyRef Name="store_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="supiQ_fk">
+    <End Role="import_permession" Type="Self.import_permession" Multiplicity="1" />
+    <End Role="Import_Quantity" Type="Self.Import_Quantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="import_permession">
+        <PropertyRef Name="Iper_num" />
+        <PropertyRef Name="item_id" />
+      </Principal>
+      <Dependent Role="Import_Quantity">
+        <PropertyRef Name="Iper_num" />
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WHIQ">
+    <End Role="store" Type="Self.store" Multiplicity="0..1" />
+    <End Role="Import_Quantity" Type="Self.Import_Quantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="store">
+        <PropertyRef Name="store_name" />
+      </Principal>
+      <Dependent Role="Import_Quantity">
+        <PropertyRef Name="store_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="supIm_fk">
+    <End Role="items" Type="Self.item" Multiplicity="1" />
+    <End Role="Import_Quantity" Type="Self.Import_Quantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="items">
+        <PropertyRef Name="Item_id" />
+      </Principal>
+      <Dependent Role="Import_Quantity">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="supQi_fk">
+    <End Role="suppliers" Type="Self.supplier" Multiplicity="0..1" />
+    <End Role="Import_Quantity" Type="Self.Import_Quantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="suppliers">
+        <PropertyRef Name="suplier_email" />
+      </Principal>
+      <Dependent Role="Import_Quantity">
+        <PropertyRef Name="suplier_email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ii_fk">
+    <End Role="items" Type="Self.item" Multiplicity="1" />
+    <End Role="Item_store" Type="Self.Item_store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="items">
+        <PropertyRef Name="Item_id" />
+      </Principal>
+      <Dependent Role="Item_store">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ISs_fk">
+    <End Role="store" Type="Self.store" Multiplicity="1" />
+    <End Role="Item_store" Type="Self.Item_store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="store">
+        <PropertyRef Name="store_name" />
+      </Principal>
+      <Dependent Role="Item_store">
+        <PropertyRef Name="store_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="m_fk">
+    <End Role="items" Type="Self.item" Multiplicity="1" />
+    <End Role="measuring_unit" Type="Self.measuring_unit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="items">
+        <PropertyRef Name="Item_id" />
+      </Principal>
+      <Dependent Role="measuring_unit">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="marketEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="customers" EntityType="Self.customer" />
+    <EntitySet Name="Export_permession" EntityType="Self.Export_permession" />
+    <EntitySet Name="Export_Quantity" EntityType="Self.Export_Quantity" />
+    <EntitySet Name="import_permession" EntityType="Self.import_permession" />
+    <EntitySet Name="Import_Quantity" EntityType="Self.Import_Quantity" />
+    <EntitySet Name="Item_store" EntityType="Self.Item_store" />
+    <EntitySet Name="items" EntityType="Self.item" />
+    <EntitySet Name="measuring_unit" EntityType="Self.measuring_unit" />
+    <EntitySet Name="stores" EntityType="Self.store" />
+    <EntitySet Name="suppliers" EntityType="Self.supplier" />
+    <AssociationSet Name="ec_fk" Association="Self.ec_fk">
+      <End Role="customers" EntitySet="customers" />
+      <End Role="Export_permession" EntitySet="Export_permession" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CEQE" Association="Self.FK_CEQE">
+      <End Role="customers" EntitySet="customers" />
+      <End Role="Export_Quantity" EntitySet="Export_Quantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SPEQQ" Association="Self.FK_SPEQQ">
+      <End Role="Export_permession" EntitySet="Export_permession" />
+      <End Role="Export_Quantity" EntitySet="Export_Quantity" />
+    </AssociationSet>
+    <AssociationSet Name="se_fk" Association="Self.se_fk">
+      <End Role="items" EntitySet="items" />
+      <End Role="Export_permession" EntitySet="Export_permession" />
+    </AssociationSet>
+    <AssociationSet Name="str_fk" Association="Self.str_fk">
+      <End Role="store" EntitySet="stores" />
+      <End Role="Export_permession" EntitySet="Export_permession" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SPEQ" Association="Self.FK_SPEQ">
+      <End Role="items" EntitySet="items" />
+      <End Role="Export_Quantity" EntitySet="Export_Quantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WHEQE" Association="Self.FK_WHEQE">
+      <End Role="store" EntitySet="stores" />
+      <End Role="Export_Quantity" EntitySet="Export_Quantity" />
+    </AssociationSet>
+    <AssociationSet Name="ip_fk" Association="Self.ip_fk">
+      <End Role="items" EntitySet="items" />
+      <End Role="import_permession" EntitySet="import_permession" />
+    </AssociationSet>
+    <AssociationSet Name="sp_fk" Association="Self.sp_fk">
+      <End Role="suppliers" EntitySet="suppliers" />
+      <End Role="import_permession" EntitySet="import_permession" />
+    </AssociationSet>
+    <AssociationSet Name="stp_fk" Association="Self.stp_fk">
+      <End Role="store" EntitySet="stores" />
+      <End Role="import_permession" EntitySet="import_permession" />
+    </AssociationSet>
+    <AssociationSet Name="supiQ_fk" Association="Self.supiQ_fk">
+      <End Role="import_permession" EntitySet="import_permession" />
+      <End Role="Import_Quantity" EntitySet="Import_Quantity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WHIQ" Association="Self.FK_WHIQ">
+      <End Role="store" EntitySet="stores" />
+      <End Role="Import_Quantity" EntitySet="Import_Quantity" />
+    </AssociationSet>
+    <AssociationSet Name="supIm_fk" Association="Self.supIm_fk">
+      <End Role="items" EntitySet="items" />
+      <End Role="Import_Quantity" EntitySet="Import_Quantity" />
+    </AssociationSet>
+    <AssociationSet Name="supQi_fk" Association="Self.supQi_fk">
+      <End Role="suppliers" EntitySet="suppliers" />
+      <End Role="Import_Quantity" EntitySet="Import_Quantity" />
+    </AssociationSet>
+    <AssociationSet Name="ii_fk" Association="Self.ii_fk">
+      <End Role="items" EntitySet="items" />
+      <End Role="Item_store" EntitySet="Item_store" />
+    </AssociationSet>
+    <AssociationSet Name="ISs_fk" Association="Self.ISs_fk">
+      <End Role="store" EntitySet="stores" />
+      <End Role="Item_store" EntitySet="Item_store" />
+    </AssociationSet>
+    <AssociationSet Name="m_fk" Association="Self.m_fk">
+      <End Role="items" EntitySet="items" />
+      <End Role="measuring_unit" EntitySet="measuring_unit" />
+    </AssociationSet>
+    <FunctionImport Name="impdate">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="perNo" Mode="In" Type="Int32" />
+      <Parameter Name="itmId" Mode="In" Type="Int32" />
+      <Parameter Name="mail" Mode="In" Type="String" />
+      <Parameter Name="StrName" Mode="In" Type="String" />
+      <Parameter Name="Q" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="impQ_update">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="itmId1" Mode="In" Type="Int32" />
+      <Parameter Name="mail1" Mode="In" Type="String" />
+      <Parameter Name="StrName1" Mode="In" Type="String" />
+      <Parameter Name="Q" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="expQuant">
+      <Parameter Name="exID" Mode="In" Type="Int32" />
+      <Parameter Name="experNo" Mode="In" Type="Int32" />
+      <Parameter Name="exitmId" Mode="In" Type="Int32" />
+      <Parameter Name="cmail" Mode="In" Type="String" />
+      <Parameter Name="exStrName" Mode="In" Type="String" />
+      <Parameter Name="exQ" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="MiniusImpQun_">
+      <Parameter Name="newQ" Mode="In" Type="Int32" />
+      <Parameter Name="item_id" Mode="In" Type="Int32" />
+      <Parameter Name="storename" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="expQ_update">
+      <Parameter Name="itemID" Mode="In" Type="Int32" />
+      <Parameter Name="pernumber" Mode="In" Type="Int32" />
+      <Parameter Name="uc_mail1" Mode="In" Type="String" />
+      <Parameter Name="UStrName1" Mode="In" Type="String" />
+      <Parameter Name="UQ" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Up_itemstorQ">
+      <Parameter Name="itemID" Mode="In" Type="Int32" />
+      <Parameter Name="St_nm" Mode="In" Type="String" />
+      <Parameter Name="NewQun" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="storeReport" ReturnType="Collection(marketModel.storeReport_Result)">
+      <Parameter Name="stName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="itemreport" ReturnType="Collection(marketModel.itemreport_Result)">
+      <Parameter Name="item_ID" Mode="In" Type="Int32" />
+      <Parameter Name="stname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="itemperiod" ReturnType="Collection(marketModel.itemperiod_Result)">
+      <Parameter Name="itmId" Mode="In" Type="Int32" />
+      <Parameter Name="Rang" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="updatetrans">
+      <Parameter Name="itmid" Mode="In" Type="Int32" />
+      <Parameter Name="prodate" Mode="In" Type="DateTime" />
+      <Parameter Name="exdate" Mode="In" Type="DateTime" />
+      <Parameter Name="stname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="expdate" ReturnType="Collection(marketModel.expdate_Result)">
+      <Parameter Name="itmcod" Mode="In" Type="Int32" />
+      <Parameter Name="day" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="storeReport_Result">
+    <Property Type="Int32" Name="Item_id" Nullable="false" />
+    <Property Type="DateTime" Name="prod_date" Nullable="false" />
+    <Property Type="DateTime" Name="ex_date" Nullable="false" />
+    <Property Type="String" Name="store_manager" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="store_Address" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="itemreport_Result">
+    <Property Type="String" Name="item_name" Nullable="false" MaxLength="59" />
+    <Property Type="DateTime" Name="prod_date" Nullable="false" />
+    <Property Type="DateTime" Name="Ex_date" Nullable="false" />
+    <Property Type="String" Name="store_name" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="itemperiod_Result">
+    <Property Type="String" Name="item_name" Nullable="false" MaxLength="59" />
+    <Property Type="DateTime" Name="prod_date" Nullable="false" />
+    <Property Type="DateTime" Name="Ex_date" Nullable="false" />
+    <Property Type="String" Name="store_name" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="Quantity" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="expdate_Result">
+    <Property Type="String" Name="item_name" Nullable="false" MaxLength="59" />
+    <Property Type="DateTime" Name="prod_date" Nullable="false" />
+    <Property Type="DateTime" Name="Ex_date" Nullable="false" />
+    <Property Type="String" Name="store_name" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+  </ComplexType>
+</Schema>

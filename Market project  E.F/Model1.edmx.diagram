@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f764756f7ff44fc0b3eb431f9fffe8ea" Name="Diagram1">
+        <EntityTypeShape EntityType="marketModel.customer" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketModel.Export_permession" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketModel.Export_Quantity" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketModel.import_permession" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketModel.Import_Quantity" Width="1.5" PointX="11.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketModel.Item_store" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketModel.item" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketModel.measuring_unit" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketModel.store" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketModel.supplier" Width="1.5" PointX="3.75" PointY="10.25" IsExpanded="true" />
+        <AssociationConnector Association="marketModel.ec_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="marketModel.FK_CEQE" ManuallyRouted="false" />
+        <AssociationConnector Association="marketModel.FK_SPEQQ" ManuallyRouted="false" />
+        <AssociationConnector Association="marketModel.se_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="marketModel.str_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="marketModel.FK_SPEQ" ManuallyRouted="false" />
+        <AssociationConnector Association="marketModel.FK_WHEQE" ManuallyRouted="false" />
+        <AssociationConnector Association="marketModel.ip_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="marketModel.sp_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="marketModel.stp_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="marketModel.supiQ_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="marketModel.FK_WHIQ" ManuallyRouted="false" />
+        <AssociationConnector Association="marketModel.supIm_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="marketModel.supQi_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="marketModel.ii_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="marketModel.ISs_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="marketModel.m_fk" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

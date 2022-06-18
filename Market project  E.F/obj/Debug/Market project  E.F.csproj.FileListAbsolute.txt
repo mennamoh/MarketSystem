@@ -1,0 +1,36 @@
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\bin\Debug\Market project  E.F.exe.config
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\bin\Debug\Market project  E.F.exe
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\bin\Debug\Market project  E.F.pdb
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\bin\Debug\EntityFramework.dll
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\bin\Debug\EntityFramework.SqlServer.dll
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\bin\Debug\EntityFramework.xml
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\bin\Debug\EntityFramework.SqlServer.xml
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\obj\Debug\Market_project__E.F.Form1.resources
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\obj\Debug\Market_project__E.F.Properties.Resources.resources
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\obj\Debug\Market project  E.F.csproj.GenerateResource.cache
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\obj\Debug\Market project  E.F.csproj.CoreCompileInputs.cache
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\obj\Debug\Market project  E.F.csproj.CopyComplete
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\obj\Debug\Market project  E.F.exe
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\obj\Debug\Market project  E.F.pdb
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\obj\Debug\Market_project__E.F.Form2.resources
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\obj\Debug\Market_project__E.F.Form3.resources
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\obj\Debug\Market_project__E.F.Form4.resources
+D:\iti assigment\c#\Market project  E.F\Market project  E.F\obj\Debug\Market project  E.F.csprojAssemblyReference.cache
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\bin\Debug\Market project  E.F.exe.config
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\bin\Debug\Market project  E.F.exe
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\bin\Debug\Market project  E.F.pdb
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\bin\Debug\EntityFramework.dll
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\bin\Debug\EntityFramework.xml
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\obj\Debug\Market project  E.F.csprojAssemblyReference.cache
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\obj\Debug\Market_project__E.F.Form1.resources
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\obj\Debug\Market_project__E.F.Form2.resources
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\obj\Debug\Market_project__E.F.Form3.resources
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\obj\Debug\Market_project__E.F.Form4.resources
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\obj\Debug\Market_project__E.F.Properties.Resources.resources
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\obj\Debug\Market project  E.F.csproj.GenerateResource.cache
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\obj\Debug\Market project  E.F.csproj.CoreCompileInputs.cache
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\obj\Debug\Market project  E.F.csproj.CopyComplete
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\obj\Debug\Market project  E.F.exe
+C:\Users\Access\Desktop\New folder\Market project  E.F\Market project  E.F\obj\Debug\Market project  E.F.pdb

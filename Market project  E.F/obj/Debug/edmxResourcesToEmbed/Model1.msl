@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="marketModelStoreContainer" CdmEntityContainer="marketEntities1">
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="marketModel.customer">
+        <MappingFragment StoreEntitySet="customers">
+          <ScalarProperty Name="c_name" ColumnName="c_name" />
+          <ScalarProperty Name="c_email" ColumnName="c_email" />
+          <ScalarProperty Name="c_phone" ColumnName="c_phone" />
+          <ScalarProperty Name="c_website" ColumnName="c_website" />
+          <ScalarProperty Name="c_fax" ColumnName="c_fax" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Export_permession">
+      <EntityTypeMapping TypeName="marketModel.Export_permession">
+        <MappingFragment StoreEntitySet="Export_permession">
+          <ScalarProperty Name="eper_num" ColumnName="eper_num" />
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="store_name" ColumnName="store_name" />
+          <ScalarProperty Name="c_email" ColumnName="c_email" />
+          <ScalarProperty Name="eper_date" ColumnName="eper_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Export_Quantity">
+      <EntityTypeMapping TypeName="marketModel.Export_Quantity">
+        <MappingFragment StoreEntitySet="Export_Quantity">
+          <ScalarProperty Name="eper_num" ColumnName="eper_num" />
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="c_email" ColumnName="c_email" />
+          <ScalarProperty Name="store_name" ColumnName="store_name" />
+          <ScalarProperty Name="export_quantity1" ColumnName="export_quantity" />
+          <ScalarProperty Name="Prod_Date" ColumnName="Prod_Date" />
+          <ScalarProperty Name="Expi_Date" ColumnName="Expi_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="import_permession">
+      <EntityTypeMapping TypeName="marketModel.import_permession">
+        <MappingFragment StoreEntitySet="import_permession">
+          <ScalarProperty Name="Iper_num" ColumnName="Iper_num" />
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="suplier_email" ColumnName="suplier_email" />
+          <ScalarProperty Name="store_name" ColumnName="store_name" />
+          <ScalarProperty Name="Iper_date" ColumnName="Iper_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Import_Quantity">
+      <EntityTypeMapping TypeName="marketModel.Import_Quantity">
+        <MappingFragment StoreEntitySet="Import_Quantity">
+          <ScalarProperty Name="Iper_num" ColumnName="Iper_num" />
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="suplier_email" ColumnName="suplier_email" />
+          <ScalarProperty Name="store_name" ColumnName="store_name" />
+          <ScalarProperty Name="I_quantity" ColumnName="I_quantity" />
+          <ScalarProperty Name="Prod_date" ColumnName="Prod_date" />
+          <ScalarProperty Name="Exp_date" ColumnName="Exp_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Item_store">
+      <EntityTypeMapping TypeName="marketModel.Item_store">
+        <MappingFragment StoreEntitySet="Item_store">
+          <ScalarProperty Name="store_name" ColumnName="store_name" />
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="items">
+      <EntityTypeMapping TypeName="marketModel.item">
+        <MappingFragment StoreEntitySet="items">
+          <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+          <ScalarProperty Name="item_name" ColumnName="item_name" />
+          <ScalarProperty Name="prod_date" ColumnName="prod_date" />
+          <ScalarProperty Name="Ex_date" ColumnName="Ex_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="measuring_unit">
+      <EntityTypeMapping TypeName="marketModel.measuring_unit">
+        <MappingFragment StoreEntitySet="measuring_unit">
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="measure" ColumnName="measure" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stores">
+      <EntityTypeMapping TypeName="marketModel.store">
+        <MappingFragment StoreEntitySet="store">
+          <ScalarProperty Name="store_name" ColumnName="store_name" />
+          <ScalarProperty Name="store_Address" ColumnName="store_Address" />
+          <ScalarProperty Name="store_manager" ColumnName="store_manager" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="suppliers">
+      <EntityTypeMapping TypeName="marketModel.supplier">
+        <MappingFragment StoreEntitySet="suppliers">
+          <ScalarProperty Name="suplier_name" ColumnName="suplier_name" />
+          <ScalarProperty Name="suplier_email" ColumnName="suplier_email" />
+          <ScalarProperty Name="suplier_phone" ColumnName="suplier_phone" />
+          <ScalarProperty Name="suplier_mobile" ColumnName="suplier_mobile" />
+          <ScalarProperty Name="Suplier_fax" ColumnName="Suplier_fax" />
+          <ScalarProperty Name="Suplier_site" ColumnName="Suplier_site" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="impdate" FunctionName="marketModel.Store.impdate" />
+    <FunctionImportMapping FunctionImportName="impQ_update" FunctionName="marketModel.Store.impQ_update" />
+    <FunctionImportMapping FunctionImportName="expQuant" FunctionName="marketModel.Store.expQuant" />
+    <FunctionImportMapping FunctionImportName="MiniusImpQun_" FunctionName="marketModel.Store.MiniusImpQun_" />
+    <FunctionImportMapping FunctionImportName="expQ_update" FunctionName="marketModel.Store.expQ_update" />
+    <FunctionImportMapping FunctionImportName="Up_itemstorQ" FunctionName="marketModel.Store.Up_itemstorQ" />
+    <FunctionImportMapping FunctionImportName="storeReport" FunctionName="marketModel.Store.storeReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="marketModel.storeReport_Result">
+          <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+          <ScalarProperty Name="prod_date" ColumnName="prod_date" />
+          <ScalarProperty Name="ex_date" ColumnName="ex_date" />
+          <ScalarProperty Name="store_manager" ColumnName="store_manager" />
+          <ScalarProperty Name="store_Address" ColumnName="store_Address" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="itemreport" FunctionName="marketModel.Store.itemreport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="marketModel.itemreport_Result">
+          <ScalarProperty Name="item_name" ColumnName="item_name" />
+          <ScalarProperty Name="prod_date" ColumnName="prod_date" />
+          <ScalarProperty Name="Ex_date" ColumnName="Ex_date" />
+          <ScalarProperty Name="store_name" ColumnName="store_name" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="itemperiod" FunctionName="marketModel.Store.itemperiod">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="marketModel.itemperiod_Result">
+          <ScalarProperty Name="item_name" ColumnName="item_name" />
+          <ScalarProperty Name="prod_date" ColumnName="prod_date" />
+          <ScalarProperty Name="Ex_date" ColumnName="Ex_date" />
+          <ScalarProperty Name="store_name" ColumnName="store_name" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="updatetrans" FunctionName="marketModel.Store.updatetrans" />
+    <FunctionImportMapping FunctionImportName="expdate" FunctionName="marketModel.Store.expdate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="marketModel.expdate_Result">
+          <ScalarProperty Name="item_name" ColumnName="item_name" />
+          <ScalarProperty Name="prod_date" ColumnName="prod_date" />
+          <ScalarProperty Name="Ex_date" ColumnName="Ex_date" />
+          <ScalarProperty Name="store_name" ColumnName="store_name" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
